@@ -1,0 +1,248 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;==========================================================
+
+[colors]
+background = #1a1b26
+background-alt = #414868
+foreground = #abb2bf
+foreground-alt = #c0caf5
+primary = #f7768e
+secondary = #9ece6a
+alert = #f7768e
+
+[bar/main]
+monitor = HDMI-0
+enable-ipc = true
+width = 100%
+height = 25
+offset-x = 0
+offset-y = 0
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = ${colors.secondary}
+
+border-size = 0
+border-color = #000000
+
+padding-left = 1
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = "Hack:style=Bold:size=10;3"
+font-1 = "MesloLGS NF:size=13;3"
+font-2 = "Cica:size=13;3"
+
+modules-left = bspwm tiling-mode xwindow
+modules-center = date
+modules-right = xautolock timer spotify spotify-name weather pulseaudio powermenu
+
+tray-position = left
+tray-padding = 1
+
+wm-restack = bspwm
+override-redirect = true
+
+underline-size = 2
+underline-color = #f7768e
+overline-size = 2
+overline-color = #f7768e
+
+[bar/secondary]
+monitor = DP-5
+enable-ipc = true
+width = 100%
+height = 25
+offset-x = 0
+offset-y = 0
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = ${colors.secondary}
+
+border-size = 0
+border-color = #000000
+
+padding-left = 1
+padding-right = 1
+
+module-margin-left = 1
+module-margin-right = 1
+
+font-0 = "Hack:style=Bold:size=10;3"
+font-1 = "MesloLGS NF:size=13;3"
+font-2 = "Cica:size=13;3"
+
+modules-left = bspwm xwindow
+modules-center = date
+modules-right = pulseaudio
+
+wm-restack = bspwm
+override-redirect = true
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+label-underline = ${colors.primary}
+
+[module/bspwm]
+type = internal/bspwm
+pin-workspaces = true
+enable-click = true
+enable-scroll = false
+reverse-scroll = false
+occupied-scroll = true
+
+;label-focused = "%name%/%icon%"
+;label-focused = "%name%"
+label-focused = ""
+label-focused-font = 2
+label-focused-margin = 1
+;label-focused-margin-left = 2
+label-focused-foreground = ${colors.primary}
+;label-focused-underline = ${colors.primary}
+
+;label-occupied = "%name%/%icon%"
+;label-occupied = "%name%"
+label-occupied = ""
+label-occupied-font = 2
+label-occupied-margin = 1
+;label-occupied-margin-left = 2
+label-occupied-foreground = ${colors.foreground-alt}
+;label-occupied-underline = ${colors.foreground-alt}
+
+;label-empty = "%name%/%icon%"
+;label-empty = "%name%"
+label-empty = ""
+label-empty-font = 2
+label-empty-margin = 1
+;label-empty-margin-left = 2
+label-empty-foreground = ${colors.background-alt}
+;label-empty-underline = ${colors.background-alt}
+
+ws-icon-0 = 火;
+ws-icon-1 = キ;
+ws-icon-2 = 空;󰘐
+ws-icon-3 = 死;
+ws-icon-4 = 祖;󰙯
+ws-icon-5 = ち;
+ws-icon-6 = ツ;
+ws-icon-7 = な;
+
+[module/date]
+type = internal/date
+interval = 5
+
+date = "%b %d - %H:%M"
+date-alt = "%A, %d %B - %H:%M:%S"
+
+label = %date%
+label-underline = ${colors.primary}
+
+;[module/time]
+;type = internal/date
+;interval = 5
+;time = %H:%M
+;label = %time%
+;;format-prefix = " "
+;format-prefix-foreground = ${colors.primary}
+;format-foreground = ${colors.foreground}
+;label-underline = ${colors.primary}
+
+;[module/date]
+;type = internal/date
+;interval = 200
+;date = %Y-%m-%d
+;label = %date%
+;;format-prefix = " "
+;format-prefix-foreground = ${colors.primary}
+;format-foreground = ${colors.foreground}
+;label-underline = ${colors.primary}
+
+[module/alsa]
+type = internal/alsa
+format-volume = "%{F#f7768e}%{F-} <label-volume>"
+format-volume-underline = ${colors.primary}
+
+format-muted = "%{F#c0caf5}%{F-} Muted"
+format-muted-underline = ${colors.foreground}
+
+[module/pulseaudio]
+type = internal/pulseaudio
+format-volume = "%{F#f7768e}%{F-} <label-volume>"
+format-volume-underline = ${colors.primary}
+
+format-muted = "%{F#c0caf5}%{F-} Muted"
+format-muted-underline = ${colors.foreground}
+
+click-right = pavucontrol &
+
+[module/spotify]
+type = custom/script
+exec = echo "  " ; playerctl --player=spotify metadata --format "{{ title }} - {{ artist }}"
+click-left = playerctl --player=spotify previous
+click-middle = playerctl --player=spotify play-pause
+click-right = playerctl --player=spotify next
+interval = 5000
+format-underline = ${colors.primary}
+
+[module/spotify-name]
+type = custom/script
+exec = ~/.config/polybar/scripts/spotify_status.sh
+label-underline = ${colors.primary}
+interval = 10
+label-maxlen = 30
+
+[module/weather]
+type = custom/script
+exec = ~/.config/polybar/scripts/weather.sh
+label-underline = ${colors.primary}
+interval = 1800
+
+[module/powermenu]
+type = custom/script
+exec = echo ""
+click-left = ~/.config/polybar/scripts/powermenu.sh
+
+[module/tiling-mode]
+type = custom/script
+exec = ~/.config/polybar/scripts/get_tiling_mode.sh
+interval = 1
+label-underline = ${colors.primary}
+
+[module/xautolock]
+type = custom/script
+exec = echo "LOCK: $(pgrep xautolock > /dev/null && echo ON || echo OFF)"
+click-left = ~/.config/polybar/scripts/toggle-lock.sh
+interval = 5
+label-underline = ${colors.primary}
+
+[module/timer]
+type = custom/script
+exec = ~/.config/polybar/scripts/polybar-timer.sh tail 'TIMER' 5
+tail = true
+label-underline = ${colors.primary}
+
+click-left = ~/.config/polybar/scripts/polybar-timer.sh new 25 'Pomo session' 'Paused' 'notify-send "Session finished"' ; ~/.config/polybar/scripts/polybar-timer.sh update %pid%
+click-middle = ~/.config/polybar/scripts/polybar-timer.sh cancel ; ~/.config/polybar/scripts/polybar-timer.sh update %pid%
+click-right = ~/.config/polybar/scripts/polybar-timer.sh togglepause ; ~/.config/polybar/scripts/polybar-timer.sh update %pid%
+scroll-up = ~/.config/polybar/scripts/polybar-timer.sh increase 60 || ~/.config/polybar/scripts/polybar-timer.sh new 1 'TIMER' 'PAUSED' 'notify-send -u critical "Timer expired."' ; ~/.config/polybar/scripts/polybar-timer.sh update %pid%
+scroll-down = ~/.config/polybar/scripts/polybar-timer.sh increase -60 ; ~/.config/polybar/scripts/polybar-timer.sh update %pid%
