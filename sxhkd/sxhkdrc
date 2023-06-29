@@ -41,7 +41,7 @@ super + alt + {q,r}
 
 # screenlock
 super + ctrl + l
-  i3lock -i ~/Wallpapers/b47.png
+  i3lock -t -i ~/Wallpapers/b47.png
 
 # close and kill
 super + {_,shift + }w
